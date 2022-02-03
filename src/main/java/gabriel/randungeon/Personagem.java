@@ -1,19 +1,27 @@
 
 package gabriel.randungeon;
-import java.util.ArrayList;
+
+import java.util.List;
 
 /**
  *
  * @author Gabriel
  */
 public class Personagem {
-    private String nome;
-    private ArrayList<Equipavel> equip = new ArrayList<>();
-    private ArrayList<Item> itens = new ArrayList<>();
-    private ArrayList<Efeito> efeitosAtivos = new ArrayList<>();
+    private final String nome;
+    private List<Item> mochila;
+    private List<Efeito> efeitosAtivos;
     private int poderCombate;
     private int nivel;
     private int dinheiro;
+    private Equipavel arma;
+    private Equipavel armadura;
+    private Equipavel manto;
+    private Equipavel bota;
+    public static final char ARMA = 'w';
+    public static final char ARMADURA = 'a';
+    public static final char BOTA = 'b';
+    public static final char MANTO = 'c';
     
     public Personagem(String nome){
         this.nivel = 1;
@@ -29,47 +37,50 @@ public class Personagem {
     void addDinheiro(int n){this.dinheiro += n;}
     
     void setEquip(Equipavel n){
-        for(Equipavel item : this.equip){
-            if(item.equipado() && item.verificaTipo(n.getTipo())){
-                item.desequipa();
-                n.equipa();
-            }
+        switch (n.getTipo()) {
+            case ARMA:
+                if(this.arma != null)
+                    this.arma.desequipa();
+                this.arma = n;
+                break;
+            case ARMADURA:
+                if(this.armadura != null)
+                    this.armadura.desequipa();
+                this.armadura = n;
+                break;
+            case MANTO:
+                if(this.manto != null)
+                    this.manto.desequipa();
+                this.manto = n;
+                break;
+            default:
+                if(this.bota != null)
+                    this.bota.desequipa();
+                this.bota = n;
+                break;
         }
+        n.equipa();
     }
     
-    Equipavel getArma(){
-        for(Equipavel item : this.equip){
-            if(item.equipado() && item.verificaTipo('w'))
-                return item;
-        }
-        return null;
-    }
+    Equipavel getArma(){return this.arma;}
     
-    Item getArmadura(){
-    for(Equipavel item : this.equip){
-            if(item.equipado() && item.verificaTipo('a'))
-                return item;
-        }
-        return null;
-    }
+    Equipavel getArmadura(){return this.armadura;}
     
-    Item getManto(){
-    for(Equipavel item : this.equip){
-            if(item.equipado() && item.verificaTipo('c'))
-                return item;
-        }
-        return null;
-    }
+    Equipavel getManto(){return this.manto;}
     
-    Item getBota(){
-    for(Equipavel item : this.equip){
-            if(item.equipado() && item.verificaTipo('b'))
-                return item;
-        }
-        return null;
-    }
+    Equipavel getBota(){return this.bota;}
     
-    void removeEquip(Equipavel item){item.desequipa();}
+    void removeEquip(Equipavel item){
+        item.desequipa();
+        if(item == this.arma)
+            this.arma = null;
+        else if(item == this.armadura)
+            this.armadura = null;
+        else if(item == this.manto)
+            this.manto = null;
+        else
+            this.bota = null;
+    }
     
     void addEfeito(Efeito n){this.efeitosAtivos.add(n); }
     
@@ -81,13 +92,9 @@ public class Personagem {
         }
     }
     
-    void addEquips(Equipavel n){this.equip.add(n);}
+    void addMochila(Item n){this.mochila.add(n);}
     
-    void retiraEquips(Equipavel n){this.equip.remove(n);}
-    
-    void addItens(Item n){this.itens.add(n);}
-    
-    void removeItens(Item n){this.itens.remove(n); }
+    void removeMochila(Item n){this.mochila.remove(n); }
     
     void addNivel(){
         this.nivel++;
@@ -96,8 +103,8 @@ public class Personagem {
     
     void morte(){
         this.nivel = 1;
-        this.equip.clear();
-        this.itens.clear();
+        this.mochila.clear();
+        this.efeitosAtivos.clear();
         this.calculaPoderCombate();
     }
     
@@ -110,12 +117,8 @@ public class Personagem {
     }
     
     private void calculaPoderCombate(){
-        int a = 0;
-        for(Equipavel item : this.equip){
-            if(item.equipado())
-                a += item.getPoder();
-        }
-        this.poderCombate = a + nivel + this.getBuffsDebuffs();
+        this.poderCombate = nivel + this.getBuffsDebuffs() + arma.getPoder()+ armadura.getPoder()+
+                manto.getPoder()+ bota.getPoder();
     }
     
     int getPoderCombate(){return this.poderCombate;}
