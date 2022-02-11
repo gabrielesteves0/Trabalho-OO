@@ -3,6 +3,7 @@ package gabriel.randungeon;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,9 +14,9 @@ public class Efeito extends Item implements InterfaceItem {
     private final int DURACAO_EFEITO;
 //    private static int qtdEfeitos = 0;
     private final int id;
-    private static List<Efeito> listaEfeitos = new ArrayList<>();
+    private static final List<Efeito> listaEfeitos = new ArrayList<>();
     
-    public Efeito(String nome, int poder, int duracaoEfeito, String img){
+    public Efeito(String nome, int poder, int duracaoEfeito){
         super(nome, poder, 0);
         this.duracaoEfeito = duracaoEfeito;
         DURACAO_EFEITO = duracaoEfeito;
@@ -57,5 +58,9 @@ public class Efeito extends Item implements InterfaceItem {
             listaEfeitos.add(this);
     }
     
-    public static Efeito sorteia(){return null;}
+    public static Efeito sorteia(){
+        int i = (int)((Math.random()) * listaEfeitos.size());
+        return listaEfeitos.get(i);
+    }
+    
 }

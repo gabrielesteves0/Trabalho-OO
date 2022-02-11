@@ -1,7 +1,11 @@
 
 package gabriel.randungeon;
 
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -9,8 +13,8 @@ import java.util.List;
  */
 public class Personagem {
     private final String nome;
-    private List<Item> mochila;
-    private List<Efeito> efeitosAtivos;
+    private List<Item> mochila = new ArrayList<>();
+    private List<Efeito> efeitosAtivos = new ArrayList<>();
     private int poderCombate;
     private int nivel;
     private int dinheiro;
@@ -22,19 +26,32 @@ public class Personagem {
     public static final char ARMADURA = 'a';
     public static final char BOTA = 'b';
     public static final char MANTO = 'c';
+    private static final Map<String, Personagem> listaPersonagens = new HashMap<>();
+    private int poderAdicional;
     
     public Personagem(String nome){
         this.nivel = 1;
         this.poderCombate = 1;
         this.nome = nome;
         this.dinheiro = 0;
+        this.arma = null;
+        this.armadura = null;
+        this.manto = null;
+        this.bota = null;
+        listaPersonagens.put(this.nome, this);
     }
     
-    String getNome(){return this.nome;}
+    public String getNome(){return this.nome;}
+    
+    public static Personagem getPersonagem(String nome){
+        return listaPersonagens.get(nome);
+    }
     
     int getDinheiro(){return this.dinheiro;}
     
-    void addDinheiro(int n){this.dinheiro += n;}
+    public void addDinheiro(int n){this.dinheiro += n;}
+    
+    public List<Item> getMochila(){return this.mochila;}
     
     void setEquip(Equipavel n){
         switch (n.getTipo()) {
@@ -62,15 +79,15 @@ public class Personagem {
         n.equipa();
     }
     
-    Equipavel getArma(){return this.arma;}
+    public Equipavel getArma(){return this.arma;}
     
-    Equipavel getArmadura(){return this.armadura;}
+    public Equipavel getArmadura(){return this.armadura;}
     
-    Equipavel getManto(){return this.manto;}
+    public Equipavel getManto(){return this.manto;}
     
-    Equipavel getBota(){return this.bota;}
+    public Equipavel getBota(){return this.bota;}
     
-    void removeEquip(Equipavel item){
+    public void removeEquip(Equipavel item){
         item.desequipa();
         if(item == this.arma)
             this.arma = null;
@@ -82,9 +99,9 @@ public class Personagem {
             this.bota = null;
     }
     
-    void addEfeito(Efeito n){this.efeitosAtivos.add(n); }
+    public void addEfeito(Efeito n){this.efeitosAtivos.add(n); }
     
-    void clearEfeitos(){
+    public void clearEfeitos(){
         for(Efeito efeito : this.efeitosAtivos){
             efeito.usoEfeito();
             if(efeito.verificaAcabou())
@@ -92,19 +109,24 @@ public class Personagem {
         }
     }
     
-    void addMochila(Item n){this.mochila.add(n);}
+    public void addMochila(Item n){this.mochila.add(n);}
     
-    void removeMochila(Item n){this.mochila.remove(n); }
+    public void removeMochila(Item n){this.mochila.remove(n); }
     
-    void addNivel(){
+    public void addNivel(){
         this.nivel++;
         this.poderCombate++;
     }
     
-    void morte(){
+    public void morte(){
         this.nivel = 1;
+        this.resetaAuxiliarPoderCombate();
         this.mochila.clear();
         this.efeitosAtivos.clear();
+        this.armadura = null;
+        this.arma = null;
+        this.manto = null;
+        this.bota = null;
         this.calculaPoderCombate();
     }
     
@@ -118,11 +140,24 @@ public class Personagem {
     
     private void calculaPoderCombate(){
         this.poderCombate = nivel + this.getBuffsDebuffs() + arma.getPoder()+ armadura.getPoder()+
-                manto.getPoder()+ bota.getPoder();
+                manto.getPoder()+ bota.getPoder() + this.poderAdicional;
     }
     
-    int getPoderCombate(){return this.poderCombate;}
+    public void usaItem(Consumivel item){
+        this.poderAdicional = item.getPoder();
+        this.calculaPoderCombate();
+    }
     
-    int getNivel(){return nivel;}
+    public void resetaAuxiliarPoderCombate(){
+        this.poderAdicional = 0;
+        this.calculaPoderCombate();
+    }
+    
+    public int getPoderCombate(){
+        this.calculaPoderCombate();
+        return this.poderCombate;
+    }
+    
+    public int getNivel(){return nivel;}
     
 }

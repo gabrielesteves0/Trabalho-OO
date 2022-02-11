@@ -41,9 +41,20 @@ public class Monstro {
     
     public static int getQtd(){return listaMonstros.size();}
     
+    public void removeLista(){listaMonstros.remove(this);}
+    
     public static void imprimeNomes(){
         for(Monstro m : listaMonstros){
             System.out.println(m.getNome());
         }
+    }
+    
+    public static Monstro sorteia(){
+        int i = (int)((Math.random()) * listaMonstros.size());
+        return listaMonstros.get(i);
+    }
+    
+    public int calculaRecompensa(){
+        return (int) ((this.nivel * 2) * ((Math.random() * 4)+1));
     }
 }

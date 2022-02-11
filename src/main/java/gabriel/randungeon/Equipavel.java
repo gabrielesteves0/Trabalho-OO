@@ -78,6 +78,9 @@ public class Equipavel extends Item implements InterfaceItem {
             listaEquipaveis.add(this);
     }
     
-    public static Equipavel sorteia(){return null;}
+    public static Equipavel sorteia(){
+        int i = (int)((Math.random()) * listaEquipaveis.size());
+        return listaEquipaveis.get(i);
+    }
     
 }

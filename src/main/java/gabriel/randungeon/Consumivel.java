@@ -3,6 +3,7 @@ package gabriel.randungeon;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,6 +39,14 @@ public class Consumivel extends Item implements InterfaceItem {
     @Override
     public void removeLista(){listaConsumiveis.remove(this);}
     
+    public static Consumivel getConsumivelPorNome(String nome) throws NullPointerException{
+        for(Consumivel consumivel : listaConsumiveis){
+            if(consumivel.getNome() == nome)
+                return consumivel;
+        }
+        return null;
+    }
+    
     private boolean estaLista(){
         for(Consumivel consumivel : listaConsumiveis){
             if(this == consumivel)
@@ -53,5 +62,8 @@ public class Consumivel extends Item implements InterfaceItem {
             listaConsumiveis.add(this);
     }
     
-    public static Consumivel sorteia(){return null;}
+    public static Consumivel sorteia(){
+        int i = (int)(Math.random() * listaConsumiveis.size());
+        return listaConsumiveis.get(i);
+    }
 }
