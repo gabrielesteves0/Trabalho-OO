@@ -1,0 +1,9 @@
+Exaustao_Leve -2 1
+Exaustao_Media -2 3
+Exaustao_Extrema -5 2
+Resfriado -1 1
+Gripe -2 2
+Reducao_De_Velocidade -2 1
+Reducao_De_Forca -4 1
+Reducao_De_Resistencia -3 2
+Reducao_De_Percepcao -3 2
