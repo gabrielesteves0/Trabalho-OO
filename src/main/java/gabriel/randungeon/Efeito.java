@@ -45,7 +45,7 @@ public class Efeito extends Item implements InterfaceItem {
     @Override
     public void removeLista(){listaEfeitos.remove(this);}
     
-    private boolean estaLista(){
+    public boolean estaLista(){
         for(Efeito efeito : listaEfeitos){
             if(this == efeito)
                 return true;

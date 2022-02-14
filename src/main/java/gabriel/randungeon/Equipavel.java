@@ -79,7 +79,7 @@ public class Equipavel extends Item implements InterfaceItem {
     @Override
     public void removeLista(){listaEquipaveis.remove(this);}
     
-    private boolean estaLista(){
+    public boolean estaLista(){
         for(Equipavel equipavel : listaEquipaveis){
             if(this == equipavel)
                 return true;

@@ -125,6 +125,7 @@ public class PainelSalaMonstro extends javax.swing.JPanel {
             personagem.clearEfeitos();
             this.frame.setVisible(false);
             this.frame.getFrameBase().setVisible(true);
+            personagem.resetaAuxiliarPoderCombate();
             this.frame.dispose();
         } else {
             personagem.morte();
@@ -160,6 +161,7 @@ public class PainelSalaMonstro extends javax.swing.JPanel {
             personagem.clearEfeitos();
             this.frame.setVisible(false);
             this.frame.getFrameBase().setVisible(true);
+            personagem.resetaAuxiliarPoderCombate();
             this.frame.dispose();
         } else {
             personagem.morte();

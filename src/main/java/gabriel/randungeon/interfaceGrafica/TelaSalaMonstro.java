@@ -22,6 +22,7 @@ public class TelaSalaMonstro extends JFrame {
     private EntreSalas frame;
 
     public TelaSalaMonstro(Personagem personagem, EntreSalas frame) {
+        
         this.setSize(600, 600);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -37,6 +38,7 @@ public class TelaSalaMonstro extends JFrame {
             }
         });
         this.personagem = personagem;
+        personagem.resetaAuxiliarPoderCombate();
         this.frame = frame;
         PainelSalaMonstro painel = new PainelSalaMonstro((Monstro) MenuPrincipal.niveis.get(MenuPrincipal.contadorNivel).getObjetoSala(),
                 this.personagem, this);

@@ -48,7 +48,7 @@ public class Consumivel extends Item implements InterfaceItem {
         return null;
     }
     
-    private boolean estaLista(){
+    public boolean estaLista(){
         for(Consumivel consumivel : listaConsumiveis){
             if(this == consumivel)
                 return true;

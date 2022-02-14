@@ -69,6 +69,8 @@ public abstract class Item implements InterfaceItem {
     }
 
     public abstract void removeLista();
+    
+    public abstract boolean estaLista();
 
     public void resetaItem() {
         this.equipado = false;
