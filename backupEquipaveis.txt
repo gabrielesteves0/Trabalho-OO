@@ -1,0 +1,84 @@
+Botas De Andar Na Agua(10)_10_x
+Armadura De Couro(4)_4_a
+Armadura De Ouro(10)_10_a
+Armadura De Prata(7)_7_a
+Armadura De Placas(13)_13_a
+Bracadeira De Couro(2)_2_a
+Bracadeira De Prata(3)_3_a
+Bracadeira De Ouro(5)_5_a
+Bracadeira De Placas(6)_6_a
+Capacete De Couro(3)_3_a
+Capacete De Prata(5)_5_a
+Capacete De Ouro(6)_6_a
+Capacete De Placas(9)_9_a
+Cota De Malha(9)_9_a
+Adaga Sai(4)_4_w
+Adaga(3)_3_w
+Alabarda(11)_11_w
+Arco(8)_8_w
+Arma De Agua(1)_1_w
+Arma Laser(20)_20_w
+Besta(8)_8_w
+Canhao(17)_17_w
+Canivete(2)_2_w
+Cetro Magico(19)_19_w
+Chave Inglesa(2)_2_w
+Cimitarra(9)_9_w
+Cutelo(6)_6_w
+Escudo(8)_8_w
+Espada Enferrujada(3)_3_w
+Espada Grande(14)_14_w
+Espada Longa(9)_9_w
+Espada De Madeira(2)_2_w
+Espada Quebrada(1)_1_w
+Excalibur(25)_25_w
+Foice(13)_13_w
+Katana(11)_11_w
+Lanca(10)_10_w
+Maca(8)_8_w
+Machadinha(5)_5_w
+Machado(9)_9_w
+Martelo De Madeira(4)_4_w
+Martelo(6)_6_w
+Pistola(14)_14_w
+Placa(2)_2_w
+Porrete(4)_4_w
+Poste(5)_5_w
+Rapieira(7)_7_w
+Sabre Laser(20)_20_w
+Serra Eletrica(10)_10_w
+Soco Ingles(6)_6_w
+Varinha Magica(16)_16_w
+Bota Alada(15)_15_x
+Bota Da Protecao(13)_13_x
+Bota De Bruxa(11)_11_x
+Bota De Couro(8)_8_x
+Bota De Cowboy(7)_7_x
+Bota De Velocidade(9)_9_x
+Bota Elfica(10)_10_x
+Bota Invisivel(1)_1_x
+Bota De Duende(5)_5_x
+Bota De Ladrao(8)_8_x
+Bota De Pulo(7)_7_x
+Botina(3)_3_x
+Chinelo(1)_1_x
+Chuteira(4)_4_x
+Salto Alto(5)_5_x
+Sandalia(2)_2_x
+Tenis(3)_3_x
+Manto Da Arraia(9)_9_m
+Manto Da Invisibilidade(11)_11_m
+Manto Da Protecao(13)_13_m
+Manto Das Estrelas(15)_15_m
+Manto De Acolito(4)_4_m
+Manto De Arquimago(14)_14_m
+Manto De Assassino(12)_12_m
+Manto De Bruxo(6)_6_m
+Manto De Feiticeiro(7)_7_m
+Manto De Mago(8)_8_m
+Manto De Espiao(5)_5_m
+Manto Do Poder(11)_11_m
+Manto Do Sol(10)_10_m
+Manto Dos Olhos(8)_8_m
+Manto Elfico(6)_6_m
+Manto Simples(3)_3_m

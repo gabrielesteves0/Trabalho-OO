@@ -1,0 +1,50 @@
+Dragao Adulto_5_30
+Agua Viva_1_5
+Assassino_3_17
+Dragao Bebe_2_8
+Barata_1_2
+Bicho Papao_4_21
+Bugbear_2_10
+Carangueijo_1_7
+Cobra_1_9
+Morte_5_40
+Aguia_1_4
+Elemental da Terra_4_21
+Esqueleto_2_14
+Elemental do Fogo_4_22
+Fantasma_4_20
+Formiga Gigante_2_11
+Aranha Gigante_2_13
+Gigante_4_25
+Girafa_1_5
+Godzilla_5_29
+Hiena_1_9
+Hydra_5_30
+Elemental do Gelo_4_24
+Jacare Cultista_3_16
+Kraken_5_32
+Ladrao_2_14
+Leao_2_10
+Armadura Viva_4_20
+Lobisomem_2_19
+Lobo Magnata_4_26
+Mimico_2_14
+Minotauro_3_21
+Monstro Desconhecido_5_26
+Orc_2_12
+Pernilongo_1_2
+Pitbull_2_11
+Planta_1_1
+Rato_1_3
+Demonio_5_34
+Rinoceronte_3_18
+Salamandra_4_20
+Sombra_1_9
+Slime_1_5
+Succubus_3_16
+Morcegos_2_12
+Tubarao_2_14
+Urubu_1_8
+Elemental do Vento_4_20
+Yeti_4_26
+Zumbi_1_10

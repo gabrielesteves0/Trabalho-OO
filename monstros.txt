@@ -1,50 +1,50 @@
-Dragao_Adulto 5 30
-Agua_Viva 1 5
-Assassino 3 17
-Dragao_Bebe 2 8
-Barata 1 2
-Bicho_Papao 4 21
-Bugbear 2 10
-Carangueijo 1 7
-Cobra 1 9
-Morte 5 40
-Aguia 1 4
-Elemental_Terra 4 21
-Esqueleto 2 14
-Elemental_Fogo 4 22
-Fantasma 4 20
-Formiga_Gigante 2 11
-Aranha_Gigante 2 13
-Gigante 4 25
-Girafa 1 5
-Godzilla 5 29
-Hiena 1 9
-Hydra 5 30
-Elemental_Gelo 4 24
-Jacare_Cultista 3 16
-Kraken 5 32
-Ladrao 2 14
-Leao 2 10
-Armadura_Viva 4 20
-Lobisomem 2 19
-Lobo_Magnata 4 26
-Mimico 2 14
-Minotauro 3 21
-Monstro_Desconhecido 5 26
-Orc 2 12
-Pernilongo 1 2
-Pitbull 2 11
-Planta 1 1
-Rato 1 3
-Demonio 5 34
-Rinoceronte 3 18
-Salamandra 4 20
-Sombra 1 9
-Slime 1 5
-Succubus 3 16
-Morcegos 2 12
-Tubarao 2 14
-Urubu 1 8
-Elemental_Vento 4 20
-Yeti 4 26
-Zumbi 1 10
+Dragao Adulto_5_30
+Agua Viva_1_5
+Assassino_3_17
+Dragao Bebe_2_8
+Barata_1_2
+Bicho Papao_4_21
+Bugbear_2_10
+Carangueijo_1_7
+Cobra_1_9
+Morte_5_40
+Aguia_1_4
+Elemental da Terra_4_21
+Esqueleto_2_14
+Elemental do Fogo_4_22
+Fantasma_4_20
+Formiga Gigante_2_11
+Aranha Gigante_2_13
+Gigante_4_25
+Girafa_1_5
+Godzilla_5_29
+Hiena_1_9
+Hydra_5_30
+Elemental do Gelo_4_24
+Jacare Cultista_3_16
+Kraken_5_32
+Ladrao_2_14
+Leao_2_10
+Armadura Viva_4_20
+Lobisomem_2_19
+Lobo Magnata_4_26
+Mimico_2_14
+Minotauro_3_21
+Monstro Desconhecido_5_26
+Orc_2_12
+Pernilongo_1_2
+Pitbull_2_11
+Planta_1_1
+Rato_1_3
+Demonio_5_34
+Rinoceronte_3_18
+Salamandra_4_20
+Sombra_1_9
+Slime_1_5
+Succubus_3_16
+Morcegos_2_12
+Tubarao_2_14
+Urubu_1_8
+Elemental do Vento_4_20
+Yeti_4_26
+Zumbi_1_10

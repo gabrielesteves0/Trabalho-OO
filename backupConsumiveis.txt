@@ -1,0 +1,21 @@
+Bomba Atomica(15)_15
+Bomba Grande(8)_8
+Bomba(6)_6
+Dinamite(2)_2
+Granada Fumaca(3)_3
+Granada(5)_5
+Kunai(4)_4
+Molotov(6)_6
+Pocao Cospe Fogo(9)_9
+Pocao Cospe Raio(10)_10
+Pocao Da Amizade(6)_6
+Pocao Da Defesa(8)_8
+Pocao De Vida(12)_12
+Pocao Do Amor(13)_13
+Pocao Explosiva(8)_8
+Pocao Da Força(11)_11
+Pocao Da Invisibilidade(10)_10
+Shuriken(3)_3
+Veneno Forte(7)_7
+Veneno Medio(4)_4
+Veneno(2)_2
