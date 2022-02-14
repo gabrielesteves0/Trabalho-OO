@@ -1,12 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+//Aluno: Gabriel Antônio Esteves Matta
+//Matrícula: 202065125A
+
 package gabriel.randungeon.interfaceGrafica;
 
 import gabriel.randungeon.Consumivel;
 import gabriel.randungeon.Personagem;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,11 +18,13 @@ public class PainelGerenciamentoCinto extends javax.swing.JPanel {
      * Creates new form NewJPanel
      */
     
-    Personagem personagem;
+    private Personagem personagem;
+    private TelaGerenciadorCinto frame;
     
-    public PainelGerenciamentoCinto(Personagem personagem) {
+    public PainelGerenciamentoCinto(Personagem personagem, TelaGerenciadorCinto frame) {
         initComponents();
         this.personagem = personagem;
+        this.frame = frame;
     }
 
     /**
@@ -70,6 +72,11 @@ public class PainelGerenciamentoCinto extends javax.swing.JPanel {
         });
 
         removeCinto.setText("Remover do Cinto");
+        removeCinto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeCintoActionPerformed(evt);
+            }
+        });
 
         voltar.setText("Voltar");
         voltar.addActionListener(new java.awt.event.ActionListener() {
@@ -84,30 +91,25 @@ public class PainelGerenciamentoCinto extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(115, 115, 115)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(125, 125, 125)
-                                .addComponent(jLabel2)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(addCinto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removeCinto)
-                        .addGap(0, 78, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(89, 89, 89)
+                .addComponent(addCinto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(removeCinto)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(168, 168, 168))
+                .addGap(164, 164, 164)
+                .addComponent(voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(161, 161, 161))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(127, 127, 127))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(111, 111, 111))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,23 +136,49 @@ public class PainelGerenciamentoCinto extends javax.swing.JPanel {
     
     
     private void addCintoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCintoActionPerformed
-        
-        DefaultListModel<String> modeloMochila = (DefaultListModel) listaMochila.getModel();
-        DefaultListModel<String> modeloCinto = (DefaultListModel) listaCinto.getModel();
-        modeloCinto.addElement(listaMochila.getSelectedValue());
-        listaCinto.setModel(modeloCinto);
-        GUI.itensCinto.add(Consumivel.getConsumivelPorNome(listaMochila.getSelectedValue()));
-        Consumivel.getConsumivelPorNome(listaMochila.getSelectedValue()).equipa();
-        GUI.itensMochila.remove(Consumivel.getConsumivelPorNome(listaMochila.getSelectedValue()));
-        
-        modeloMochila.removeElement(listaMochila.getSelectedValue());
-        listaMochila.setModel(modeloMochila);
+        try{
+            if(listaCinto.getComponentCount() <= 6){
+                DefaultListModel<String> modeloMochila = (DefaultListModel<String>) listaMochila.getModel();
+                DefaultListModel<String> modeloCinto = (DefaultListModel<String>) listaCinto.getModel();
+
+                modeloCinto.addElement(listaMochila.getSelectedValue());
+                listaCinto.setModel(modeloCinto);
+                EntreSalas.itensCinto.add(Consumivel.getConsumivelPorNome(listaMochila.getSelectedValue()));
+                Consumivel.getConsumivelPorNome(listaMochila.getSelectedValue()).equipa();
+                EntreSalas.itensMochila.remove(Consumivel.getConsumivelPorNome(listaMochila.getSelectedValue()));
+
+                modeloMochila.removeElement(listaMochila.getSelectedValue());
+                listaMochila.setModel(modeloMochila);
+            }else{
+                JOptionPane.showMessageDialog(this, "Cinto cheio!");
+            }
+        }catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(this, "Por favor, selecione apenas um item da lista de itens da mochila");
+        }
     }//GEN-LAST:event_addCintoActionPerformed
 
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
-        GUI.telaGerenciadorCinto.setVisible(false);
-        GUI.entreSalas(personagem);
+        this.frame.dispose();
+        this.frame.getFrameBase().setVisible(true);
     }//GEN-LAST:event_voltarActionPerformed
+
+    private void removeCintoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCintoActionPerformed
+        try{
+            DefaultListModel<String> modeloMochila = (DefaultListModel<String>) listaMochila.getModel();
+            DefaultListModel<String> modeloCinto = (DefaultListModel<String>) listaCinto.getModel();
+
+            modeloMochila.addElement(listaCinto.getSelectedValue());
+            listaMochila.setModel(modeloMochila);
+            EntreSalas.itensMochila.add(Consumivel.getConsumivelPorNome(listaCinto.getSelectedValue()));
+            Consumivel.getConsumivelPorNome(listaCinto.getSelectedValue()).desequipa();
+            EntreSalas.itensCinto.remove(Consumivel.getConsumivelPorNome(listaCinto.getSelectedValue()));
+
+            modeloCinto.removeElement(listaCinto.getSelectedValue());
+            listaCinto.setModel(modeloCinto);
+        }catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(this, "Por favor, selecione apenas um item da lista de itens do cinto");
+        }
+    }//GEN-LAST:event_removeCintoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,33 +1,45 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+//Aluno: Gabriel Antônio Esteves Matta
+//Matrícula: 202065125A
+
 package gabriel.randungeon.interfaceGrafica;
 
 import gabriel.randungeon.Consumivel;
 import gabriel.randungeon.Item;
+import gabriel.randungeon.Leitor;
 import gabriel.randungeon.Personagem;
-import javax.swing.DefaultListModel;
-import javax.swing.table.DefaultTableModel;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Gabriel
  */
-public class Cinto extends javax.swing.JPanel {
+public class Cinto extends javax.swing.JFrame {
 
-    private final Personagem personagem;
-    DefaultListModel mdl;
+    private Personagem personagem;
+    private PainelSalaMonstro painel;
     
-    public Cinto(Personagem personagem) {
-        this.mdl = new DefaultListModel();
-        initComponents();
+    public Cinto(Personagem personagem, PainelSalaMonstro painel) {
         this.personagem = personagem;
-        for(Item item : personagem.getMochila()){
-            if(item.equipado())
-                mdl.addElement(item.getNome());
-        }
-        cinto.setModel(mdl);
+        this.painel = painel;
+        initComponents();
+        this.setVisible(true);
+        this.setSize(600, 600);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                int i = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?", "Saída", JOptionPane.YES_NO_OPTION);
+                if (i == JOptionPane.YES_OPTION) {
+                    Leitor.gravaUsuarios();
+                    Leitor.gravaPersonagens();
+                    System.exit(0);
+                } else {
+                    repaint();
+                }
+            }
+        });
     }
 
     /**
@@ -40,72 +52,94 @@ public class Cinto extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        cinto = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        listaCinto = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
+        usarItem = new javax.swing.JButton();
+        voltar = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(400, 400));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        cinto.setModel(mdl);
-        cinto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        cinto.setLayoutOrientation(javax.swing.JList.VERTICAL_WRAP);
-        jScrollPane1.setViewportView(cinto);
+        listaCinto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaCinto.setToolTipText("");
+        listaCinto.setLayoutOrientation(javax.swing.JList.VERTICAL_WRAP);
+        jScrollPane1.setViewportView(listaCinto);
 
-        jButton1.setText("Usar Item");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setText("Cinto");
+
+        usarItem.setText("Usar item");
+        usarItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                usarItemActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Voltar");
+        voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addGap(221, 221, 221)
+                .addComponent(jLabel1)
+                .addContainerGap(254, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(121, Short.MAX_VALUE)
+                .addComponent(usarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addComponent(voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(120, 120, 120))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(100, Short.MAX_VALUE))
+                    .addComponent(usarItem)
+                    .addComponent(voltar))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void usarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usarItemActionPerformed
         for(Item item : personagem.getMochila()){
-            if(item.getNome().equals(cinto.getSelectedValue())){
-                personagem.getMochila().remove(item);
-                item.resetaItem();
-            }
+            if(item.getNome().equals(listaCinto.getSelectedValue()) && item.equipado()){
+                Consumivel cons = (Consumivel) item;
+                personagem.usaItem(cons);
+                cons.resetaItem();
+                break;
+            } 
         }
-        mdl.remove(cinto.getSelectedIndex());
-        cinto.setModel(mdl);
-        personagem.getPoderCombate();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        painel.poderPlayer.setText("O poder do jogador é " + this.personagem.getPoderCombate());
+        painel.poderPlayer.update(painel.poderPlayer.getGraphics());
+        JOptionPane.showMessageDialog(this, "Item utilizado!");
+        this.dispose();
+    }//GEN-LAST:event_usarItemActionPerformed
 
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_voltarActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> cinto;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    protected javax.swing.JList<String> listaCinto;
+    private javax.swing.JButton usarItem;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }

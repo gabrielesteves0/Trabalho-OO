@@ -1,3 +1,6 @@
+//Aluno: Gabriel Antônio Esteves Matta
+//Matrícula: 202065125A
+
 
 package gabriel.randungeon;
 
@@ -24,6 +27,22 @@ public class Usuario {
         this.senha = senha;
         listaUsuarios.add(this);
     }
+    
+    public void leituraUsuario(ArrayList<String> listaPersonagens){
+        for (String personagem : listaPersonagens) {
+            try{
+                this.addPersonagem(Personagem.getPersonagem(personagem));
+            }catch(NullPointerException ex){
+            }
+        }
+    }
+    
+    
+    public static List<Usuario> getListaUsuarios(){
+        return listaUsuarios;
+    }
+    
+    public String getSenha(){return this.senha;}
     
     public static Usuario getUsuario(String nome){
         for(Usuario usuario : listaUsuarios){

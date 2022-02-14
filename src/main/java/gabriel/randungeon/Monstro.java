@@ -1,5 +1,8 @@
+//Aluno: Gabriel Antônio Esteves Matta
+//Matrícula: 202065125A
 
 package gabriel.randungeon;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,5 +59,15 @@ public class Monstro {
     
     public int calculaRecompensa(){
         return (int) ((this.nivel * 2) * ((Math.random() * 4)+1));
+    }
+    
+    public static List<Monstro> getLista(){return listaMonstros;}
+    
+    public static Monstro getMonstro(String nome){
+        for(Monstro monstro : listaMonstros){
+            if(monstro.getNome().equals(nome))
+                return monstro;
+        }
+        return null;
     }
 }

@@ -1,3 +1,6 @@
+//Aluno: Gabriel Antônio Esteves Matta
+//Matrícula: 202065125A
+
 package gabriel.randungeon;
 
 /**
@@ -40,6 +43,18 @@ public abstract class Item implements InterfaceItem {
 
     public int getValor() {
         return this.valor;
+    }
+    
+    public static Item getItem(String nome){
+        for(Equipavel equipavel : Equipavel.getLista()){
+            if(equipavel.getNome().equals(nome))
+                return (Item)equipavel;
+        }
+        for (Consumivel consumivel : Consumivel.getLista()) {
+            if(consumivel.getNome().equals(nome))
+                return (Item) consumivel;
+        }
+        return null;
     }
 
     public abstract int getId();

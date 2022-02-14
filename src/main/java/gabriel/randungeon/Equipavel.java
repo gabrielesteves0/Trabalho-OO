@@ -1,3 +1,5 @@
+//Aluno: Gabriel Antônio Esteves Matta
+//Matrícula: 202065125A
 
 package gabriel.randungeon;
 
@@ -14,7 +16,7 @@ public class Equipavel extends Item implements InterfaceItem {
     public static final char ARMA = 'w';
     public static final char ARMADURA = 'a';
     public static final char BOTA = 'x';
-    public static final char MANTO = 'c';
+    public static final char MANTO = 'm';
     private final char tipo;
 //    private static int qtdEquipaveis = 0;
     private final int id;
@@ -23,14 +25,20 @@ public class Equipavel extends Item implements InterfaceItem {
     
     public Equipavel(String nome, char tipo, int poder, int valor){
         super(nome, poder, valor);
-        if(tipo == ARMA)
-            this.tipo = ARMA;
-        else if(tipo == ARMADURA)
-            this.tipo = ARMADURA;
-        else if(tipo == BOTA)
-            this.tipo = BOTA;
-        else
-            this.tipo = MANTO;
+        switch (tipo) {
+            case ARMA:
+                this.tipo = ARMA;
+                break;
+            case ARMADURA:
+                this.tipo = ARMADURA;
+                break;
+            case BOTA:
+                this.tipo = BOTA;
+                break;
+            default:
+                this.tipo = MANTO;
+                break;
+        }
         if(!listaEquipaveis.isEmpty())
             this.id = listaEquipaveis.size();
         else
@@ -45,6 +53,14 @@ public class Equipavel extends Item implements InterfaceItem {
             return true;
         else
             return false;
+    }
+    
+    public static Equipavel getEquipavel(String nome){
+        for(Equipavel equipavel : listaEquipaveis){
+            if(equipavel.getNome().equals(nome))
+                return equipavel;
+        }
+        return null;
     }
     
     public static int getQtd(){return listaEquipaveis.size();}
@@ -82,5 +98,7 @@ public class Equipavel extends Item implements InterfaceItem {
         int i = (int)((Math.random()) * listaEquipaveis.size());
         return listaEquipaveis.get(i);
     }
+    
+    public static List<Equipavel> getLista(){return listaEquipaveis;}
     
 }

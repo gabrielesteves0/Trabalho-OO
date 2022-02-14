@@ -1,3 +1,6 @@
+//Aluno: Gabriel Antônio Esteves Matta
+//Matrícula: 202065125A
+
 package gabriel.randungeon.interfaceGrafica;
 
 import gabriel.randungeon.Consumivel;
@@ -5,7 +8,6 @@ import gabriel.randungeon.Efeito;
 import gabriel.randungeon.Equipavel;
 import gabriel.randungeon.Monstro;
 import gabriel.randungeon.Personagem;
-import gabriel.randungeon.interfaceGrafica.GUI;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -152,27 +154,30 @@ public class Nivel {
     public int getQtdSalas() {
         return this.qtdSalas;
     }
+    
+    
+    public Object getObjetoSala(){return this.objetosNivel.get(this.contadorSalas);}
 
-    public void joga(Personagem personagem)  {
+    public void joga(Personagem personagem, EntreSalas entreSalas)  {
         switch (this.getTipoSala(this.contadorSalas)) {
             case MONSTRO:
-                GUI.salaMonstro();
+                entreSalas.salaMonstro(personagem);
                 break;
             case LOJA:
-                GUI.salaLoja();
+                entreSalas.salaLoja(personagem);
                 break;
             case ITEM:
-                GUI.salaItem();
+                entreSalas.salaItem(personagem);
                 break;
             case ARMADILHA:
-                GUI.salaArmadilha();
+                entreSalas.salaArmadilha(personagem);
                 break;
             default:
-                JOptionPane.showMessageDialog(GUI.menu, "Sala vazia!");
+                JOptionPane.showMessageDialog(MenuPrincipal.menu, "Sala vazia!");
+                entreSalas.setVisible(true);
                 break;
         }
         contadorSalas++;
-        GUI.entreSalas(personagem);
     }
 
 }

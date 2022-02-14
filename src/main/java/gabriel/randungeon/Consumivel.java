@@ -1,9 +1,10 @@
+//Aluno: Gabriel Antônio Esteves Matta
+//Matrícula: 202065125A
 
 package gabriel.randungeon;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,7 +42,7 @@ public class Consumivel extends Item implements InterfaceItem {
     
     public static Consumivel getConsumivelPorNome(String nome) throws NullPointerException{
         for(Consumivel consumivel : listaConsumiveis){
-            if(consumivel.getNome() == nome)
+            if(consumivel.getNome().equals(nome))
                 return consumivel;
         }
         return null;
@@ -60,6 +61,10 @@ public class Consumivel extends Item implements InterfaceItem {
         this.equipado = false;
         if(!this.estaLista())
             listaConsumiveis.add(this);
+    }
+    
+    public static List<Consumivel> getLista(){
+        return listaConsumiveis;
     }
     
     public static Consumivel sorteia(){

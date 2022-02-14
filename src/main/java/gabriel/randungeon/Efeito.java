@@ -1,9 +1,10 @@
+//Aluno: Gabriel Antônio Esteves Matta
+//Matrícula: 202065125A
 
 package gabriel.randungeon;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,6 +32,8 @@ public class Efeito extends Item implements InterfaceItem {
     public void usoEfeito(){this.duracaoEfeito--;}
     
     public static int getQtd(){return listaEfeitos.size();}
+    
+    public int getDuracao(){return this.duracaoEfeito;}
     
     @Override
     public int getId(){return this.id;}
@@ -61,6 +64,18 @@ public class Efeito extends Item implements InterfaceItem {
     public static Efeito sorteia(){
         int i = (int)((Math.random()) * listaEfeitos.size());
         return listaEfeitos.get(i);
+    }
+    
+    public static List<Efeito> getLista(){
+        return listaEfeitos;
+    }
+    
+    public static Efeito getEfeito(String nome){
+        for(Efeito efeito : listaEfeitos){
+            if(efeito.getNome().equals(nome))
+                return efeito;
+        }
+        return null;
     }
     
 }
